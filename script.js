@@ -74,8 +74,16 @@ $(document).ready(function(){
 		imageAdjust();
 	})
 
+
+	/* Generate the time scroller*/
+
 	$(function(){
-	    $('#demo').mobiscroll().time({
+	    $('#AM').mobiscroll().time({
+	        theme: 'wp',
+	        display: 'inline',
+	        mode: 'scroller'
+	    });
+	    $('#PM').mobiscroll().time({
 	        theme: 'wp',
 	        display: 'inline',
 	        mode: 'scroller'
@@ -86,19 +94,21 @@ $(document).ready(function(){
 
 	function removeUnwanted(){
 		$('td:nth-child(2)').css({display:"none"})
-		$('#demo').css({display:"none"})
+		$('input#AM').css({display:"none"})
+		$('input#PM').css({display:"none"})
 	}
 
-	function getTimeFromInput(){
-		var time = $('#demo').val();
-		alert(time);
+	function insertID(){
+		$('timepicker div div').css({background:"#red"});
 	}
+
 })
 
 
-function getTimeFromInput(){
-	var time = document.getElementById("demo").value;
+function getTimeFromInput(option){
+	var time = document.getElementById(option).value;
 	var hour = time[0]+time[1];
 	var AmPm = time[time.length-2]+time[time.length-1];
-	//alert(hour+" "+AmPm);
+	var timeString = hour +' '+AmPm;
+	document.getElementById(option+"input").value=timeString;
 }
