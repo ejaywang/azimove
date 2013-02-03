@@ -13,7 +13,7 @@ $(document).ready(function(){
 	}
 
 
-	function buildCard(card_info,window_width,window_height){
+	function buildCard(card_info){
 		//extract content of card_info. I'm assuming this is going to 
 		//give me title, activity type, time, address, image
 		title = card_info['title'];
@@ -21,9 +21,6 @@ $(document).ready(function(){
 		time = card_info['time'];
 		address = card_info['address']
 		image = card_info['image'];
-		var img = new Image();
-		img.src = image;
-		var image_size = imageRescale(img,window_width,window_height);
 		str = 	'<div class = "card">'
 						+'<div class = "content">'
 							+'<h1>'+title+'</h1>'
@@ -39,29 +36,40 @@ $(document).ready(function(){
 
 	}
 	
-	function imageRescale(img,window_width,window_height){
-		//var image_width = 
+	function imageAdjust(){
 		var image_size = new Array();
-		image_ratio = img.height/img.width;
-		image_size[1] = window_width*0.95;
-		image_size[2] = image_size[1]*image_ratio;
-		return image_size;
+		$(".card").each(function(){
+			var img = new Image();
+			var card_width = $(this).width();
+			var card_height = $(this).height();
+			img.src = $(this).find('img').attr('src');
+			image_ratio = img.height/img.width;
+			image_size[1] = card_width; //at this point I know the image width is as large as the card
+			//alert(image_size[1])
+			image_size[2] = image_size[1] * image_ratio;
+			if  (image_size[2] < card_height) { 
+				image_size[2] = card_height;
+				image_size[1] = image_size[2] / image_ratio;
+			}
+			$(this).find('img').width(image_size[1]).height(image_size[2])
+		})
+
 	}
 
 	function populateBoard(events){
 		//extract information for each card from a list of events
 		//For now I'm just going to assume a json with 
 
-		//detect the window size
-		var window_width = window.innerWidth;
-		var window_height = window.innerHeight;
-
 		for (var i = 0;i < events.length;i++){
-			$card = buildCard(events[i],window_width,window_height);
-			//$card = imageRescale($card,window_width,window_height);
+			$card = buildCard(events[i]);
 			$('#activities').append($card);
+			
 		}
+		imageAdjust();
 	}
 
+	$(window).resize(function(){
+		imageAdjust()
+	})
 
 })
