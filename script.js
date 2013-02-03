@@ -67,11 +67,38 @@ $(document).ready(function(){
 			$('#activities').append($card);
 			
 		}
-		imageAdjust();
+		imageAdjust(); //doesn't happen in chrome...?
 	}
 
 	$(window).resize(function(){
-		imageAdjust()
+		imageAdjust();
 	})
 
+	$(function(){
+	    $('#demo').mobiscroll().time({
+	        theme: 'wp',
+	        display: 'inline',
+	        mode: 'scroller'
+	    });
+	    removeUnwanted();   
+	});
+
+
+	function removeUnwanted(){
+		$('td:nth-child(2)').css({display:"none"})
+		$('#demo').css({display:"none"})
+	}
+
+	function getTimeFromInput(){
+		var time = $('#demo').val();
+		alert(time);
+	}
 })
+
+
+function getTimeFromInput(){
+	var time = document.getElementById("demo").value;
+	var hour = time[0]+time[1];
+	var AmPm = time[time.length-2]+time[time.length-1];
+	//alert(hour+" "+AmPm);
+}

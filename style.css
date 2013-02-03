@@ -35,19 +35,19 @@ body{
 .gradient {
 	z-index:0;
 	/* IE10 Consumer Preview */ 
-	background-image: -ms-linear-gradient(90deg, rgba(255,255,255,0), rgba(20,20,20,1));
+	background-image: -ms-linear-gradient(90deg, rgba(255,255,255,0), rgba(70,70,70,0.6));
 
 	/* Mozilla Firefox */ 
-	background: -moz-linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(20,20,20,1));
+	background: -moz-linear-gradient(90deg, rgba(255,255,255,0) 20%, rgba(70,70,70,0.6));
 
 	/* Opera */ 
-	background-image: -o-linear-gradient(90deg, rgba(255,255,255,0), rgba(20,20,20,1));
+	background-image: -o-linear-gradient(90deg, rgba(255,255,255,0), rgba(70,70,70,0.6));
 
 	/* Webkit (Safari/Chrome 10) */ 
-	background-image: -webkit-gradient(90deg, rgba(255,255,255,0), rgba(20,20,20,1));
+	background-image: -webkit-gradient(90deg, rgba(255,255,255,0), rgba(70,70,70,0.6));
 
 	/* Webkit (Chrome 11+) */ 
-	background-image: -webkit-linear-gradient(90deg, rgba(255,255,255,0), rgba(20,20,20,0.6));
+	background-image: -webkit-linear-gradient(90deg, rgba(255,255,255,0), rgba(70,70,70,0.6));
 
 	/* W3C Markup, IE10 Release Preview */ 
 	background-image: linear-gradient(0deg, rgba(255,255,255,0), rgba(70,70,70,0.6) 40%);
