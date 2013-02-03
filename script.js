@@ -51,7 +51,9 @@ $(document).ready(function(){
 				image_size[2] = card_height;
 				image_size[1] = image_size[2] / image_ratio;
 			}
-			$(this).find('img').width(image_size[1]).height(image_size[2])
+			var margin_left = -(image_size[1] - card_width)/2;
+			var margin_top = -(image_size[2] - card_height)/2;
+			$(this).find('img').width(image_size[1]).height(image_size[2]).css({top:margin_top,left:margin_left})
 		})
 
 	}
