@@ -2,10 +2,21 @@ body{
 	background:#EEE;
 }
 
-#activities{
+#activities, #moodmenu{
 	max-width:700px;
 	margin-right:auto;
 	margin-left:auto;
+}
+
+#moodmenu {
+	text-align:center;
+}
+
+#logo {
+	font-size:15px;
+	text-align: center;
+	font-family:'OpenSans-CondLight', "Trebuchet MS", Helvetica, sans-serif;
+	margin:-10px;
 }
 
 .card {
@@ -100,12 +111,17 @@ body{
 	display:inline-block !important;
 }
 
-#logo {
-	font-size:15px;
-	text-align: center;
-	font-family:'OpenSans-CondLight', "Trebuchet MS", Helvetica, sans-serif;
-	margin:-10px;
+.moodItem {
+	display:inline-block;
+	position:relative;
+	width:100px;
+	height:100px;
+	margin:5px;
+	background:#225566;
+	padding:10px;
 }
+
+
 @font-face {
     font-family: 'JosefinSansStdLight';
     src: url('Josefin-fontfacekit/JosefinSansStd-Light-webfont.eot');

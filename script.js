@@ -1,6 +1,9 @@
 $(document).ready(function(){
 
-	test();
+	//test();
+	//time()
+	removeUnwanted();
+	makeMenu();
 
 	function test(){
 	var card1 = {"title":"Cafe La Taza", "activity":"coffee","time":"04:30","address":"2475 Mission St, San Francisco, CA 94110","image":"http://www.bonappetit.com/blogsandforums/blogs/badaily/coffee-shop-desserts-646.jpg"};
@@ -75,9 +78,29 @@ $(document).ready(function(){
 	})
 
 
+	/* Generate the menu */
+	function makeMenu(){
+		var moods = ["adventurous","chill","energetic","romantic"];
+		for (var i=0;i<moods.length;i++) {
+			$menuItem = $("<div></div>").attr("id",moods[i]).addClass("moodItem");
+			var img = new Image();
+			img.src = "menu_button/"+moods[i]+".png";
+			img.alt = moods[i];
+			$menuItem.append(img);
+			if (i < moods.length/2){
+				$menuItem.addClass("row1");
+			}
+			else{
+				$menuItem.addClass("row2");
+			}
+			$("#moodmenu").append($menuItem);
+		}
+
+	}
+
 	/* Generate the time scroller*/
 
-	$(function(){
+	function time(){
 	    $('#Begtime').mobiscroll().time({
 	        theme: 'wp',
 	        display: 'inline',
@@ -92,7 +115,7 @@ $(document).ready(function(){
 	    insertClass(); 
 	    getTimeFromInput("Begtime");
 	    getTimeFromInput("Endtime");
-	});
+	}
 
 	
 	function initializeTime(){
