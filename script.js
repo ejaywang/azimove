@@ -78,28 +78,64 @@ $(document).ready(function(){
 	/* Generate the time scroller*/
 
 	$(function(){
-	    $('#AM').mobiscroll().time({
+	    $('#Begtime').mobiscroll().time({
 	        theme: 'wp',
 	        display: 'inline',
 	        mode: 'scroller'
 	    });
-	    $('#PM').mobiscroll().time({
+	    $('#Endtime').mobiscroll().time({
 	        theme: 'wp',
 	        display: 'inline',
 	        mode: 'scroller'
 	    });
-	    removeUnwanted();   
+	    removeUnwanted();  
+	    insertClass(); 
+	    getTimeFromInput("Begtime");
+	    getTimeFromInput("Endtime");
 	});
 
-
-	function removeUnwanted(){
-		$('td:nth-child(2)').css({display:"none"})
-		$('input#AM').css({display:"none"})
-		$('input#PM').css({display:"none"})
+	
+	function initializeTime(){
+		//We will initialize the time to 6pm
+		//find everything with the class dw-sel 
+		place_of_numbers = "#timepicker td > div > div:nth-child(2) > div > div >div"
+		$(place_of_numbers).each(function(){
+			if ($(this).hasClass("dw-sel") && $(this).attr('data-val') <= 12 && $(this).attr('data-val') > 0){
+				//alert($(this).attr('data-val'))
+				return $(this).attr('data-val');
+			}
+		})
 	}
 
-	function insertID(){
-		$('timepicker div div').css({background:"#red"});
+	function getTimeFromInput(option){
+		var place_of_numbers = "#timepicker td > div > div:nth-child(2) > div > div >div";
+		var hour = 0;
+		var AmPm = 0;
+		$(place_of_numbers).each(function(){
+			if ($(this).hasClass("dw-sel")){
+				if ($(this).attr('data-val') == "0"){
+					AmPm = "AM";
+				}
+				if ($(this).attr('data-val') == "29"){
+					AmPm = "PM";
+				}
+				if (isNaN(Number($(this).find('div').html()))==false && Number($(this).find('div').html()) < 13) {
+					hour = $(this).find('div').html();
+				}
+			}
+		})
+		var timeString = hour +' '+AmPm;
+		document.getElementById(option+"input").innerHTML=timeString;
+	}
+	
+	function removeUnwanted(){
+		$('td:nth-child(2)').css({display:"none"})
+		$('input#Begtime').css({display:"none"})
+		$('input#Endtime').css({display:"none"})
+	}
+
+	function insertClass(){
+		$("#timepicker > div > div > div").addClass("timeBack");
 	}
 
 })
@@ -110,5 +146,5 @@ function getTimeFromInput(option){
 	var hour = time[0]+time[1];
 	var AmPm = time[time.length-2]+time[time.length-1];
 	var timeString = hour +' '+AmPm;
-	document.getElementById(option+"input").value=timeString;
+	document.getElementById(option+"input").innerHTML=timeString;
 }

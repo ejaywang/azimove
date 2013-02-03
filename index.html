@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <head>
 	<title> Playlist of your night </title>
-	<link rel="stylesheet" href="style.css"/>
 	<link rel="stylesheet" href="mobiscroll.datetime-2.4/css/mobiscroll.datetime-2.4.min.css" />
+	<link rel="stylesheet" href="style.css"/>
+	
 	<script src="jquery.min.js"></script>
 	<script src="mobiscroll.datetime-2.4/js/mobiscroll.datetime-2.4.min.js"></script>
 	<script src="script.js"> </script>
@@ -15,12 +16,12 @@
 	</div>
 	<div id = "timepicker">
 		<div id = "Begin">
-			<input name="demo" id="AM" class="i-txt" onchange="getTimeFromInput('AM')"/>
-			<input name="AM input" id="AMinput" />
+			<input name="demo" id="Begtime" class="i-txt" onchange="getTimeFromInput('Begtime')"/>
+			<div id='Begtimeinput'></div>
 		</div>
 		<div id = "End">
-			<input name="demo" id="PM" class="i-txt" onchange="getTimeFromInput('PM')"/>
-			<input name="PM input" id="PMinput" />
+			<input name="demo" id="Endtime" class="i-txt" onchange="getTimeFromInput('Endtime')"/>
+			<div id='Endtimeinput'></div>
 		</div>
 	</div>
 </body>
